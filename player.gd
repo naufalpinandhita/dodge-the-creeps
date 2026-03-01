@@ -1,10 +1,12 @@
 extends Area2D
+signal hit
 
 @export var speed = 400 # fast move (pixels/sec)
 var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 func _process(delta):
 	var velocity = Vector2.ZERO # Player Move
@@ -33,3 +35,7 @@ func _process(delta):
 	if velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
